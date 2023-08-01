@@ -1,0 +1,10 @@
+io/verifyotp/spring/dto/request/VerifyOtpRequest.class
+io/verifyotp/spring/dto/response/CreateOtpResponse.class
+io/verifyotp/spring/dto/request/CreateOtpRequest.class
+META-INF/spring-configuration-metadata.json
+io/verifyotp/spring/service/impl/VerifyOtpServiceImpl.class
+io/verifyotp/spring/dto/response/Data.class
+io/verifyotp/spring/configuration/VerifyOtpProperties.class
+io/verifyotp/spring/service/VerifyOtpService.class
+io/verifyotp/spring/enums/Channel.class
+io/verifyotp/spring/dto/response/VerifyOtpResponse.class
