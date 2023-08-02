@@ -1,10 +1,9 @@
 package io.verifyotp.spring.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.verifyotp.spring.enums.Channel;
 
 public class Data {
-	private Channel channel;
+	private String channel;
 	private String recipient;
 	private String reference;
 	private String otp;
@@ -21,11 +20,11 @@ public class Data {
 		this.attempts = attempts;
 	}
 
-	public Channel getChannel() {
+	public String getChannel() {
 		return channel;
 	}
 
-	public void setChannel(Channel channel) {
+	public void setChannel(String channel) {
 		this.channel = channel;
 	}
 
