@@ -11,13 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.Duration;
 
-@Component
 public class VerifyOtpServiceImpl implements VerifyOtpService {
 
     private static final String VERIFYOTP_API_ENDPOINT = "https://api.verifyotp.io/api";
