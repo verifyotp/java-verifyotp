@@ -13,12 +13,13 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.time.Duration;
 
 public class VerifyOtpServiceImpl implements VerifyOtpService {
 
-    private static final String VERIFYOTP_API_ENDPOINT = "https://api.verifyotp.io/api";
+    private static final String VERIFYOTP_API_ENDPOINT = "https://api.verifyotp.io/api/v1/otp";
     private static final String VERIFYOTP_API_KEY_HEADER = "x-api-key";
     private static final int CONNECTION_TIME_OUT = 30;
     private static final int READ_TIME_OUT = 30;
@@ -56,7 +57,7 @@ public class VerifyOtpServiceImpl implements VerifyOtpService {
         try {
             HttpHeaders httpHeaders = populateHttpHeaders();
             HttpEntity<CreateOtpRequest> request = new HttpEntity<>(createOtpRequest, httpHeaders);
-            response = restTemplate.postForObject(VERIFYOTP_API_ENDPOINT + "/send_otp", request, CreateOtpResponse.class);
+            response = restTemplate.postForObject(VERIFYOTP_API_ENDPOINT + "/send", request, CreateOtpResponse.class);
             return response;
         } catch (RuntimeException exception) {
             System.err.println(exception.getMessage());
@@ -68,9 +69,13 @@ public class VerifyOtpServiceImpl implements VerifyOtpService {
         VerifyOtpResponse response;
 
         try {
+            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(VERIFYOTP_API_ENDPOINT + "/verify")
+                    .queryParam("reference", verifyOtpRequest.getReference())
+                    .queryParam("otp", verifyOtpRequest.getOtp());
+
             HttpHeaders httpHeaders = populateHttpHeaders();
-            HttpEntity<VerifyOtpRequest> request = new HttpEntity<>(verifyOtpRequest, httpHeaders);
-            response = restTemplate.getForObject(VERIFYOTP_API_ENDPOINT + "/verify_otp", VerifyOtpResponse.class, request);
+            HttpEntity<VerifyOtpRequest> request = new HttpEntity<>(httpHeaders);
+            response = restTemplate.getForObject(builder.toUriString(), VerifyOtpResponse.class, request);
             return response;
         } catch (RuntimeException exception) {
             System.err.println(exception.getMessage());

@@ -8,6 +8,5 @@ import io.verifyotp.spring.dto.response.VerifyOtpResponse;
 public interface VerifyOtpService {
 
     CreateOtpResponse createOtp(CreateOtpRequest createOtpRequest);
-
     VerifyOtpResponse verifyOtp(VerifyOtpRequest verifyOtpRequest);
 }
