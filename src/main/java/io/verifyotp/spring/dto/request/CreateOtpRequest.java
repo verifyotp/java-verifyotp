@@ -1,25 +1,28 @@
 package io.verifyotp.spring.dto.request;
 
 import io.verifyotp.spring.enums.Channel;
+import org.springframework.lang.NonNull;
 
 public class CreateOtpRequest {
-    private String recipient;
-    private Channel channel;
-    private int length;
 
+    @NonNull private String recipient;
+    @NonNull private Channel channel;
+
+    @NonNull
     public String getRecipient() {
         return recipient;
     }
 
-    public void setRecipient(String recipient) {
+    public void setRecipient(@NonNull String recipient) {
         this.recipient = recipient;
     }
 
+    @NonNull
     public Channel getChannel() {
         return channel;
     }
 
-    public void setChannel(Channel channel) {
+    public void setChannel(@NonNull Channel channel) {
         this.channel = channel;
     }
 
@@ -31,13 +34,33 @@ public class CreateOtpRequest {
         this.length = length;
     }
 
-    public long getExpiry() {
+    public int getExpiry() {
         return expiry;
     }
 
-    public void setExpiry(long expiry) {
+    public void setExpiry(int expiry) {
         this.expiry = expiry;
     }
 
-    private long expiry;
+    public int getAttempts() {
+        return attempts;
+    }
+
+    public void setAttempts(int attempts) {
+        this.attempts = attempts;
+    }
+
+    public String getTemplateId() {
+        return templateId;
+    }
+
+    public void setTemplateId(String templateId) {
+        this.templateId = templateId;
+    }
+
+    private int length;
+    private int expiry;
+    private int attempts;
+    private String templateId;
+
 }

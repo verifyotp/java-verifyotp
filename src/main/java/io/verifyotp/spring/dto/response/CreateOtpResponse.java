@@ -1,6 +1,7 @@
 package io.verifyotp.spring.dto.response;
 
 public class CreateOtpResponse {
+	private String code;
 	private Data data;
 	private String message;
 	private String status;

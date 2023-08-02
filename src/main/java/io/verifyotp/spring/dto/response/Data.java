@@ -8,6 +8,7 @@ public class Data {
 	private String reference;
 	private String otp;
 	private int attempts;
+	private String expiresAt;
 
 	public int getAttempts() {
 		return attempts;
@@ -16,8 +17,6 @@ public class Data {
 	public void setAttempts(int attempts) {
 		this.attempts = attempts;
 	}
-
-	private String expiresAt;
 
 	public Channel getChannel() {
 		return channel;
