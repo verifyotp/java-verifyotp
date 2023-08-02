@@ -13,9 +13,9 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import java.time.Duration;
+
 
 public class VerifyOtpServiceImpl implements VerifyOtpService {
 
@@ -69,13 +69,9 @@ public class VerifyOtpServiceImpl implements VerifyOtpService {
         VerifyOtpResponse response;
 
         try {
-            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(VERIFYOTP_API_ENDPOINT + "/verify")
-                    .queryParam("reference", verifyOtpRequest.getReference())
-                    .queryParam("otp", verifyOtpRequest.getOtp());
-
             HttpHeaders httpHeaders = populateHttpHeaders();
-            HttpEntity<VerifyOtpRequest> request = new HttpEntity<>(httpHeaders);
-            response = restTemplate.getForObject(builder.toUriString(), VerifyOtpResponse.class, request);
+            HttpEntity<VerifyOtpRequest> request = new HttpEntity<>(verifyOtpRequest, httpHeaders);
+            response = restTemplate.postForObject(VERIFYOTP_API_ENDPOINT + "/verify", request, VerifyOtpResponse.class);
             return response;
         } catch (RuntimeException exception) {
             System.err.println(exception.getMessage());

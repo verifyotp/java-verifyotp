@@ -1,5 +1,6 @@
 package io.verifyotp.spring.dto.request;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.verifyotp.spring.enums.Channel;
 import org.springframework.lang.NonNull;
 
@@ -7,6 +8,12 @@ public class CreateOtpRequest {
 
     @NonNull private String recipient;
     @NonNull private Channel channel;
+    private int length;
+    private int expiry;
+    private int attempts;
+
+    @JsonProperty("template_id")
+    private String templateId;
 
     @NonNull
     public String getRecipient() {
@@ -57,10 +64,4 @@ public class CreateOtpRequest {
     public void setTemplateId(String templateId) {
         this.templateId = templateId;
     }
-
-    private int length;
-    private int expiry;
-    private int attempts;
-    private String templateId;
-
 }

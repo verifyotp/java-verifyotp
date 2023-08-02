@@ -6,6 +6,14 @@ public class CreateOtpResponse {
 	private String message;
 	private String status;
 
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
 	public void setData(Data data){
 		this.data = data;
 	}

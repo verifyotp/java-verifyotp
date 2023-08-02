@@ -1,5 +1,6 @@
 package io.verifyotp.spring.dto.response;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.verifyotp.spring.enums.Channel;
 
 public class Data {
@@ -8,6 +9,8 @@ public class Data {
 	private String reference;
 	private String otp;
 	private int attempts;
+
+	@JsonProperty("expires_at")
 	private String expiresAt;
 
 	public int getAttempts() {
