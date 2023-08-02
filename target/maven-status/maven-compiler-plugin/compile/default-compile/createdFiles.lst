@@ -2,6 +2,8 @@ io/verifyotp/spring/dto/request/VerifyOtpRequest.class
 io/verifyotp/spring/dto/response/CreateOtpResponse.class
 io/verifyotp/spring/dto/request/CreateOtpRequest.class
 META-INF/spring-configuration-metadata.json
+io/verifyotp/spring/annotation/EnableVerifyOtp.class
+io/verifyotp/spring/configuration/ApplicationConfig.class
 io/verifyotp/spring/service/impl/VerifyOtpServiceImpl.class
 io/verifyotp/spring/dto/response/Data.class
 io/verifyotp/spring/configuration/VerifyOtpProperties.class
