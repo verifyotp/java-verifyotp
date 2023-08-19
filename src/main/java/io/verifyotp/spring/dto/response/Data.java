@@ -7,18 +7,13 @@ public class Data {
 	private String recipient;
 	private String reference;
 	private String otp;
-	private int attempts;
+	private int length;
+
+	@JsonProperty("attempts_left")
+	private int attemptsLeft;
 
 	@JsonProperty("expires_at")
 	private String expiresAt;
-
-	public int getAttempts() {
-		return attempts;
-	}
-
-	public void setAttempts(int attempts) {
-		this.attempts = attempts;
-	}
 
 	public String getChannel() {
 		return channel;
@@ -58,5 +53,21 @@ public class Data {
 
 	public void setExpiresAt(String expiresAt) {
 		this.expiresAt = expiresAt;
+	}
+
+	public int getLength() {
+		return length;
+	}
+
+	public void setLength(int length) {
+		this.length = length;
+	}
+
+	public int getAttemptsLeft() {
+		return attemptsLeft;
+	}
+
+	public void setAttemptsLeft(int attemptsLeft) {
+		this.attemptsLeft = attemptsLeft;
 	}
 }
